@@ -2,65 +2,965 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="twitter:card" content="player">
 
-<meta name="twitter:card" content="player">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<meta name="twitter:title" content="🔥 VIRAL MOMENT">
+    <meta name="robots"
+          content="noindex, nofollow">
 
-<meta name="twitter:description"
-content="Watch now before it's gone">
+    <title>🔥 VIRAL MOMENT</title>
 
-<meta name="twitter:image"
-content="https://ha8is.vercel.app/thumbnail.jpg">
-
-<meta name="twitter:player"
-content="https://ha8is.vercel.app/player.html">
-
-<meta name="twitter:player:width"
-content="1280">
-
-<meta name="twitter:player:height"
-content="720">
-
-<meta name="twitter:player:stream"
-content="https://files.catbox.moe/5me8mz.mp4">
-
-<meta name="twitter:player:stream:content_type"
-content="video/mp4">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { 
-            width: 100%;
-            height: 100%;
-            background: #000; 
-            overflow: hidden;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .player-container {
-            width: 100vw;
-            height: 100vh;
+
+        html,
+        body {
+
+            width: 100%;
+            min-height: 100%;
+
+            background: #000;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #fff;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .page {
+
+            width: 100%;
+            min-height: 100vh;
+
+            background: #000;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+
+            height: 58px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 18px;
+
+            background: #000;
+
+            border-bottom: 1px solid #1b1b1b;
+        }
+
+        .logo {
+
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .logo-icon {
+
+            width: 30px;
+            height: 30px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
+            background: #ef4444;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+        }
+
+        .logo span {
+
+            color: #ef4444;
+        }
+
+        .share-btn {
+
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+            border-radius: 50%;
+
+            background: #151515;
+
+            color: #fff;
+
+            cursor: pointer;
+
+            font-size: 17px;
+        }
+
+        /* =========================
+           VIDEO
+        ========================= */
+
+        .video-section {
+
+            width: 100%;
+
             background: #000;
         }
-        .player-container video {
+
+        .video-card {
+
+            position: relative;
+
+            width: 100%;
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            aspect-ratio: 16 / 9;
+
+            overflow: hidden;
+
+            background: #000;
+
+            cursor: pointer;
+        }
+
+        .video-card video {
+
             width: 100%;
             height: 100%;
-            object-fit: contain;
+
+            display: block;
+
+            object-fit: cover;
+
+            background: #000;
         }
+
+        /* Gradient */
+
+        .video-gradient {
+
+            position: absolute;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,.35),
+                    transparent 40%,
+                    rgba(0,0,0,.75)
+                );
+        }
+
+        /* Top badge */
+
+        .video-badge {
+
+            position: absolute;
+
+            top: 14px;
+            left: 14px;
+
+            padding: 6px 10px;
+
+            background: rgba(0,0,0,.7);
+
+            border-radius: 4px;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            color: #fff;
+        }
+
+        /* Center Play */
+
+        .play-button {
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            width: 72px;
+            height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+            border-radius: 50%;
+
+            background: rgba(255,255,255,.95);
+
+            cursor: pointer;
+
+            transition: .2s ease;
+        }
+
+        .play-button:hover {
+
+            transform:
+                translate(-50%, -50%)
+                scale(1.08);
+        }
+
+        .play-button svg {
+
+            width: 30px;
+            height: 30px;
+
+            margin-left: 4px;
+
+            fill: #000;
+        }
+
+        .play-button.hidden {
+
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+        /* CTA */
+
+        .video-cta {
+
+            position: absolute;
+
+            bottom: 20px;
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            padding: 7px 12px;
+
+            background: rgba(0,0,0,.75);
+
+            border-radius: 4px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            white-space: nowrap;
+
+            pointer-events: none;
+        }
+
+        .video-cta.hidden {
+
+            opacity: 0;
+        }
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+
+            width: 100%;
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 18px;
+        }
+
+        .title {
+
+            font-size: 22px;
+            font-weight: 800;
+
+            line-height: 1.25;
+
+            margin-bottom: 8px;
+        }
+
+        .meta {
+
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+
+            color: #888;
+
+            font-size: 13px;
+        }
+
+        .dot {
+
+            width: 4px;
+            height: 4px;
+
+            border-radius: 50%;
+
+            background: #666;
+        }
+
+        /* =========================
+           ACTIONS
+        ========================= */
+
+        .actions {
+
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 18px;
+
+            padding-bottom: 18px;
+
+            border-bottom: 1px solid #1c1c1c;
+        }
+
+        .action {
+
+            padding: 9px 14px;
+
+            border: 1px solid #292929;
+
+            border-radius: 999px;
+
+            background: #111;
+
+            color: #bbb;
+
+            font-size: 13px;
+
+            cursor: pointer;
+        }
+
+        .action:hover {
+
+            color: #fff;
+
+            background: #1c1c1c;
+        }
+
+        /* =========================
+           RELATED
+        ========================= */
+
+        .related {
+
+            padding-top: 22px;
+        }
+
+        .related-title {
+
+            margin-bottom: 14px;
+
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .related-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fill,
+                    minmax(240px, 1fr)
+                );
+
+            gap: 14px;
+        }
+
+        .related-card {
+
+            overflow: hidden;
+
+            border: 1px solid #222;
+
+            border-radius: 10px;
+
+            background: #111;
+
+            cursor: pointer;
+
+            transition: .2s ease;
+        }
+
+        .related-card:hover {
+
+            transform: translateY(-3px);
+
+            background: #181818;
+        }
+
+        .related-thumb {
+
+            position: relative;
+
+            aspect-ratio: 16 / 9;
+
+            background: #1c1c1c;
+        }
+
+        .related-thumb::after {
+
+            content: "▶";
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,.9);
+
+            color: #000;
+
+            font-size: 15px;
+        }
+
+        .related-info {
+
+            padding: 12px;
+        }
+
+        .related-name {
+
+            font-size: 13px;
+            font-weight: 600;
+
+            line-height: 1.35;
+        }
+
+        .related-meta {
+
+            margin-top: 6px;
+
+            color: #777;
+
+            font-size: 11px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .header {
+
+                height: 52px;
+
+                padding: 0 12px;
+            }
+
+            .logo {
+
+                font-size: 16px;
+            }
+
+            .logo-icon {
+
+                width: 27px;
+                height: 27px;
+            }
+
+            .video-card {
+
+                aspect-ratio: 16 / 9;
+            }
+
+            .play-button {
+
+                width: 62px;
+                height: 62px;
+            }
+
+            .play-button svg {
+
+                width: 26px;
+                height: 26px;
+            }
+
+            .content {
+
+                padding: 16px 12px;
+            }
+
+            .title {
+
+                font-size: 18px;
+            }
+
+            .actions {
+
+                overflow-x: auto;
+            }
+
+            .action {
+
+                white-space: nowrap;
+            }
+
+            .related-grid {
+
+                grid-template-columns: 1fr 1fr;
+
+                gap: 8px;
+            }
+
+            .related-info {
+
+                padding: 9px;
+            }
+
+            .related-name {
+
+                font-size: 12px;
+            }
+        }
+
     </style>
 </head>
+
 <body>
-    <div class="player-container">
-        <video 
-            src="https://files.catbox.moe/5me8mz.mp4"
-            controls
-            autoplay
-            playsinline
-            preload="auto"
-        ></video>
-    </div>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🔥
+            </div>
+
+            VIRAL
+            <span>MOMENT</span>
+
+        </div>
+
+        <button
+            class="share-btn"
+            onclick="sharePage()">
+
+            ↗
+
+        </button>
+
+    </header>
+
+
+    <!-- VIDEO -->
+
+    <section class="video-section">
+
+        <div
+            class="video-card"
+            id="videoCard">
+
+            <video
+                id="mainVideo"
+                src="https://files.catbox.moe/5me8mz.mp4"
+                muted
+                autoplay
+                playsinline
+                preload="auto">
+            </video>
+
+            <div class="video-gradient"></div>
+
+            <div class="video-badge">
+                🔥 VIRAL
+            </div>
+
+            <button
+                class="play-button"
+                id="playButton">
+
+                <svg viewBox="0 0 24 24">
+
+                    <path d="M8 5v14l11-7z"/>
+
+                </svg>
+
+            </button>
+
+            <div
+                class="video-cta"
+                id="videoCta">
+
+                Click to see the full video 👀
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTENT -->
+
+    <main class="content">
+
+        <h1 class="title">
+
+            🔥 VIRAL MOMENT - YOU WON'T BELIEVE WHAT HAPPENS NEXT!
+
+        </h1>
+
+        <div class="meta">
+
+            <span>2.4M views</span>
+
+            <span class="dot"></span>
+
+            <span>Trending now</span>
+
+        </div>
+
+
+        <div class="actions">
+
+            <button
+                class="action"
+                onclick="likeVideo()">
+
+                👍 Like
+
+            </button>
+
+            <button
+                class="action"
+                onclick="sharePage()">
+
+                ↗ Share
+
+            </button>
+
+            <button
+                class="action"
+                onclick="copyLink()">
+
+                🔗 Copy link
+
+            </button>
+
+        </div>
+
+
+        <!-- RELATED -->
+
+        <section class="related">
+
+            <h2 class="related-title">
+
+                🔥 More Viral Videos
+
+            </h2>
+
+            <div class="related-grid">
+
+                <div class="related-card">
+
+                    <div class="related-thumb"></div>
+
+                    <div class="related-info">
+
+                        <div class="related-name">
+
+                            🔥 ABSOLUTELY INSANE MOMENT CAUGHT ON CAMERA!
+
+                        </div>
+
+                        <div class="related-meta">
+
+                            3.1M views · 2:15
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="related-card">
+
+                    <div class="related-thumb"></div>
+
+                    <div class="related-info">
+
+                        <div class="related-name">
+
+                            YOU WON'T BELIEVE WHAT HAPPENS NEXT 😱
+
+                        </div>
+
+                        <div class="related-meta">
+
+                            1.8M views · 1:45
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="related-card">
+
+                    <div class="related-thumb"></div>
+
+                    <div class="related-info">
+
+                        <div class="related-name">
+
+                            THE MOST SHOCKING VIDEO OF 2026
+
+                        </div>
+
+                        <div class="related-meta">
+
+                            5.2M views · 3:30
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="related-card">
+
+                    <div class="related-thumb"></div>
+
+                    <div class="related-info">
+
+                        <div class="related-name">
+
+                            EVERYONE IS TALKING ABOUT THIS VIDEO!
+
+                        </div>
+
+                        <div class="related-meta">
+
+                            2.7M views · 2:00
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+const video =
+    document.getElementById('mainVideo');
+
+const playButton =
+    document.getElementById('playButton');
+
+const videoCard =
+    document.getElementById('videoCard');
+
+const videoCta =
+    document.getElementById('videoCta');
+
+
+function toggleVideo() {
+
+    if (video.paused) {
+
+        /*
+         * Klik pertama:
+         * aktifkan suara
+         * lalu play
+         */
+
+        video.muted = false;
+
+        video.play();
+
+    } else {
+
+        video.pause();
+
+    }
+
+}
+
+
+playButton.addEventListener(
+    'click',
+    function(e) {
+
+        e.stopPropagation();
+
+        toggleVideo();
+
+    }
+);
+
+
+videoCard.addEventListener(
+    'click',
+    function(e) {
+
+        if (
+            e.target === playButton ||
+            playButton.contains(e.target)
+        ) {
+
+            return;
+
+        }
+
+        toggleVideo();
+
+    }
+);
+
+
+video.addEventListener(
+    'play',
+    function() {
+
+        playButton.classList.add('hidden');
+
+        videoCta.classList.add('hidden');
+
+    }
+);
+
+
+video.addEventListener(
+    'pause',
+    function() {
+
+        playButton.classList.remove('hidden');
+
+        videoCta.classList.remove('hidden');
+
+    }
+);
+
+
+function sharePage() {
+
+    if (
+        navigator.share
+    ) {
+
+        navigator.share({
+
+            title:
+                '🔥 VIRAL MOMENT',
+
+            text:
+                'Watch this viral video!',
+
+            url:
+                window.location.href
+
+        });
+
+    } else {
+
+        copyLink();
+
+    }
+
+}
+
+
+function copyLink() {
+
+    navigator.clipboard.writeText(
+        window.location.href
+    );
+
+    alert('Link copied!');
+
+}
+
+
+function likeVideo() {
+
+    alert('👍 Thanks for your like!');
+
+}
+
+
+video.muted = true;
+
+video.play().catch(
+    () => {
+
+        playButton.classList.remove(
+            'hidden'
+        );
+
+    }
+);
+
+</script>
+
 </body>
 </html>
